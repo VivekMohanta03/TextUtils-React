@@ -9,9 +9,18 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText);
     }
+    const handleClear = ()=>{
+        setText("");
+    }   
     const handleOnChange = (event)=>{
         setText(event.target.value);
-    }   
+    }
+    const handleCopy = ()=>{
+        console.log("I am a copy");
+        var txt = document.getElementById('myBox');
+        txt.select();
+        navigator.clipboard.writeText(txt.value);
+    }
     const [text, setText] = useState('');
     //text = "new text"; //Wrong way to change the state
     //setText("newText"); //Correct way to change the state
@@ -25,6 +34,8 @@ export default function TextForm(props) {
             <div className="btn-group">
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className="btn btn-danger" onClick={handleLowClick}>Convert to Lowercase</button>
+                <button className="btn btn-warning" onClick={handleClear}>Clear Text</button>
+                <button className="btn btn-dark" onClick={handleCopy}>Copy Text</button>
             </div>
         </div>
         <div className="container my-3">
