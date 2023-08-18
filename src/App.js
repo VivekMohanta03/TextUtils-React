@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [mode, setMode] = useState("light"); //weather dark mode is enabled or not
   const [alert, setAlert] = useState(null);
-
+  
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
