@@ -34,7 +34,7 @@ function App() {
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
-      document.title = "TextUtils | Home - Light";
+      document.title = "TextUtils | Home";
       showAlert("Light Mode has been enabled", "success");
     }
   };
