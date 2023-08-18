@@ -38,17 +38,15 @@ export default function TextForm(props) {
                     {backgroundColor: props.mode==='light'?'white':'#2125', color: props.mode==='light'?'black':'white'}
                     }></textarea>
             </div>
-            <div className="btn-group">
-                <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-danger" onClick={handleLowClick}>Convert to Lowercase</button>
-                <button className="btn btn-warning" onClick={handleClear}>Clear Text</button>
-                <button className="btn btn-dark" onClick={handleCopy}>Copy Text</button>
-            </div>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClear}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
         </div>
         <div className="container my-3" style={
                     {color: props.mode==='light'?'black':'white'}}>
             <h3>Your text Summary: </h3>
-            <p><b>{text.split(" ").length>1 ? text.split(" ").length - 1:0}</b> words and <b>{text.length}</b> characters </p>
+            <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b> characters </p>
             <p>Average reading time <b>{text.split(" ").length*0.008}</b> minutes</p>
             <h2>Preview: </h2>
             <p>{text.length?text:"Enter text to preview"}</p>
