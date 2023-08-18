@@ -49,10 +49,26 @@ function App() {
           aboutText="About Us"
         />
         <Alert alert={alert} />
+        <div className="my-3">
           <Routes>
-              <Route exact path="/TextUtils-React/" element={ <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} /> } ></Route>
-              <Route exact path="/TextUtils-React/about" element={<About />}></Route>
+            <Route
+              exact
+              path="/TextUtils-React/"
+              element={
+                <TextForm
+                  showAlert={showAlert}
+                  heading="Try TextUtils - Word Counter, Character Counter, Remove Extra Spaces"
+                  mode={mode}
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/TextUtils-React/about"
+              element={<About mode={mode} />}
+            ></Route>
           </Routes>
+        </div>
       </Router>
     </>
   );

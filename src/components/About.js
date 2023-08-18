@@ -1,36 +1,15 @@
-import React, { useState } from "react";
-
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-  const [btnColor, setBtnColor] = useState("dark");
-
-  const toggleDark = () => {
-    if (myStyle.color === "#212534") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "#212534",
-        border: "0.5px solid white",
-      });
-      setBtnText("Disable Dark Mode");
-      setBtnColor("light");
-    } else {
-      setMyStyle({
-        color: "#212534",
-        backgroundColor: "white",
-      });
-      setBtnText("Enable Dark Mode");
-      setBtnColor("dark");
-    }
+export default function About(props) {
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "#2125" : "white",
   };
 
   return (
-    <div className="container" style={myStyle}>
-      <h1 className="my-3">About Us</h1>
+    <div
+      className="container"
+      style={{ color: props.mode === "dark" ? "white" : "black" }}
+    >
+      <h1 className="my-3 ">About Us</h1>
       <div className="accordion " id="accordionExample">
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header" id="headingOne">
@@ -52,7 +31,7 @@ export default function About() {
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
+            <div className="accordion-body" style={myStyle}>
               TextUtils gives you a way to analyze your text quickly and
               efficiently. Be it word count, character count or changing it to
               uppercase, lowercase, etc.
@@ -116,9 +95,6 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button type="button" onClick={toggleDark} className={`btn btn-${btnColor} my-2`}>
-        {btnText}
-      </button>
     </div>
   );
 }
